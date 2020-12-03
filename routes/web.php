@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostsController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AboutController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +18,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('homepage');
 });
 
 Route::get('/homepage', fn() => view('homepage'));
 
-Route::get('/posts', 'PostsController@show');
+Route::get('/posts', [PostsController::class, 'index']);
 
-Route::get('/login', 'LoginController@show');
+Route::get('/login', [LoginController::class, 'show']);
+Route::get('/about', fn()=>view('about'));
 
